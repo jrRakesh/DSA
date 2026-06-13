@@ -1,9 +1,15 @@
+from collections import deque
+
+
 class QueueADT:
 	def __init__(self):
-		self.items = []
+		self.items = deque()
 
 	def is_empty(self):
 		return len(self.items) == 0
+
+	def size(self):
+		return len(self.items)
 
 	def enqueue(self, item):
 		self.items.append(item)
@@ -11,7 +17,7 @@ class QueueADT:
 	def dequeue(self):
 		if self.is_empty():
 			return "Queue is empty"
-		return self.items.pop(0)
+		return self.items.popleft()
 
 	def front(self):
 		if self.is_empty():
@@ -19,16 +25,22 @@ class QueueADT:
 		return self.items[0]
 
 	def display(self):
-		return self.items
+		return list(self.items)
+
+	def clear(self):
+		self.items.clear()
+
+	def __str__(self):
+		return str(list(self.items))
 
 
 if __name__ == "__main__":
 	queue = QueueADT()
-	queue.enqueue(10)
-	queue.enqueue(20)
-	queue.enqueue(30)
+	for value in [10, 20, 30]:
+		queue.enqueue(value)
 
-	print("Queue:", queue.display())
+	print("Queue:", queue)
+	print("Size:", queue.size())
 	print("Front element:", queue.front())
 	print("Deleted element:", queue.dequeue())
-	print("Queue after deletion:", queue.display())
+	print("Queue after deletion:", queue)
