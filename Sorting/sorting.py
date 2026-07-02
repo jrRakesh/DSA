@@ -1,6 +1,3 @@
-# DSA
-
-```python
 import random
 import time
 
@@ -26,20 +23,16 @@ def selection_sort(arr):
         if i != pos:
             swap(arr[i], arr[pos])
 
-def main():
-    n = int(input("Enter n: "))
-    A = [random.randint(0, 99999) for _ in range(n)]
 
-    # display(A)  # display before sorting
-    start_time = time.time()
+n = int(input("Enter n: "))
+A = [random.randint(0, 99999) for _ in range(n)]
 
-    selection_sort(A)
+# display before sorting
+start_time = time.time()
 
-    end_time = time.time()
-    display(A)  # display after sorting
+selection_sort(A)
 
-    print(f"Time taken is {end_time - start_time} seconds")
+end_time = time.time()
+display(A)  # display after sorting
 
-if __name__ == "__main__":
-    main()
-```
+print(f"Time taken is {end_time - start_time} seconds")
